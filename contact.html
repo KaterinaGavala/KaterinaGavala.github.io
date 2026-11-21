@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gavala Katerina - Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <span class="blue-dot">■</span>
+      <span class="name">Gavala Katerina</span> / BUSINESS ANALYST
+    </div>
+    <nav>
+      <a href="index.html">ABOUT ME</a>
+      <a href="skills.html">SKILLS</a>
+      <a href="projects.html">PROJECTS</a>
+      <a href="resume.html">RESUME</a>
+      <a href="contact.html" class="active" aria-current="page">CONTACT</a>
+    </nav>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h2><span class="blue-dot">■</span> Contact me</h2>
+    <p class="subtitle">
+      Have a question, a project or an opportunity you’d like to discuss? Send me a message and I’ll get back to you.
+    </p>
+
+    <div class="contact-card">
+      <!-- Left: Info -->
+      <div class="contact-info">
+        <h3>Get in touch</h3>
+
+        <a class="contact-item" href="tel:+306932577992">
+          <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
+          <span><span class="contact-label">Phone</span>+30 6932577992</span>
+        </a>
+
+        <a class="contact-item" href="mailto:katerinagavala0@gmail.com">
+          <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+          <span><span class="contact-label">Email</span>katerinagavala0@gmail.com</span>
+        </a>
+
+        <a class="contact-item" href="https://www.linkedin.com/in/katerina-gavala/?originalSubdomain=gr" target="_blank" rel="noopener">
+          <span class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></span>
+          <span><span class="contact-label">LinkedIn</span>katerina-gavala</span>
+        </a>
+
+        <a class="contact-item" href="https://github.com/KaterinaGavala" target="_blank" rel="noopener">
+          <span class="contact-icon"><i class="fa-brands fa-github"></i></span>
+          <span><span class="contact-label">GitHub</span>KaterinaGavala</span>
+        </a>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="contact-form">
+        <form id="contactForm">
+          <!-- Settings for formsubmit.co -->
+          <input type="hidden" name="_subject" value="New message from your portfolio">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" class="hidden-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="form-row">
+            <label>First name *
+              <input type="text" name="firstName" autocomplete="given-name" required>
+            </label>
+            <label>Last name
+              <input type="text" name="lastName" autocomplete="family-name">
+            </label>
+          </div>
+          <label>Email *
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>Message *
+            <textarea name="message" required></textarea>
+          </label>
+
+          <button type="submit" class="btn blue">Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pop-up -->
+  <div id="formPopup" class="popup" role="dialog" aria-modal="true" aria-labelledby="popupMessage">
+    <div class="popup-content">
+      <p id="popupMessage"></p>
+      <button type="button" id="closePopup" class="btn blue">Close</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 by Gavala Katerina.</p>
+    <div class="contact">
+      <div>Call<br><a href="tel:+306932577992">+30 6932577992</a></div>
+      <div>Write<br><a href="mailto:katerinagavala0@gmail.com">katerinagavala0@gmail.com</a></div>
+      <div>Follow<br>
+        <span class="footer-socials">
+          <a href="https://www.linkedin.com/in/katerina-gavala/?originalSubdomain=gr" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/KaterinaGavala" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const popup = document.getElementById("formPopup");
+    const popupBox = popup.querySelector(".popup-content");
+    const popupMessage = document.getElementById("popupMessage");
+    const closeBtn = document.getElementById("closePopup");
+
+    function openPopup(message, isError) {
+      popupMessage.textContent = message;
+      popupBox.classList.toggle("error", isError);
+      popup.classList.add("open");
+      closeBtn.focus();
+    }
+
+    function closePopup() {
+      popup.classList.remove("open");
+      submitBtn.focus();
+    }
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      try {
+        // Opened straight from the computer (file://)? The form service refuses that.
+        if (location.protocol === "file:") {
+          throw new Error("The form only works on the live website, not when the file is opened from your computer.");
+        }
+
+        const response = await fetch("https://formsubmit.co/ajax/katerinagavala0@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+        });
+        const result = await response.json().catch(() => ({}));
+
+        // Only report success when the service confirms it
+        if (response.ok && String(result.success) === "true") {
+          form.reset();
+          openPopup("✅ Thank you! Your message has been sent.", false);
+        } else {
+          throw new Error(result.message || "Status " + response.status);
+        }
+      } catch (err) {
+        console.error("Form submit error:", err);
+        // Show the real reason under the message, so it's easy to see what went wrong
+        openPopup("Your message wasn’t sent. Please try again, or email me directly at katerinagavala0@gmail.com.\n\nReason: " + err.message, true);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send message";
+      }
+    });
+
+    closeBtn.addEventListener("click", closePopup);
+
+    // Close when clicking the dark backdrop
+    popup.addEventListener("click", function (e) {
+      if (e.target === popup) closePopup();
+    });
+
+    // Close with the Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && popup.classList.contains("open")) closePopup();
+    });
+  </script>
+
+</body>
+</html>

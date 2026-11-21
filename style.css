@@ -1,0 +1,1011 @@
+/* ========== RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #000;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form controls don't inherit fonts by default */
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.blue-dot {
+  color: #2563eb;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* ========== HEADER ========== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  padding: 20px 60px;
+  font-size: 14px;
+}
+
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 300;
+  transition: color 0.2s ease;
+}
+
+/* Hover changes colour only, so the menu doesn't jump */
+header nav a:hover {
+  color: #2563eb;
+}
+
+header nav a.active {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  text-decoration: none;
+  margin-right: 10px;
+  transition: 0.3s;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn.blue {
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn.blue:hover {
+  opacity: 0.85;
+}
+
+.btn.outline {
+  border-color: #000;
+  color: #000;
+}
+
+.btn.outline:hover {
+  background: #000;
+  color: #fff;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ========== ABOUT ME PAGE ========== */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  padding: 60px;
+  position: relative;
+}
+
+/* Beige block on the left */
+main::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32%;
+  height: 100%;
+  background: #e8dfd7;
+  z-index: 0;
+}
+
+.card {
+  position: relative;
+  background: #fdfaf7;
+  padding: 50px 30px;
+  text-align: center;
+  width: 360px;
+  max-width: 100%;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  z-index: 1;
+  margin-left: 40px;
+}
+
+.card .profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 25px auto;
+}
+
+.card h3 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.card .divider {
+  width: 40px;
+  height: 3px;
+  background: #2563eb;
+  margin: 10px auto 15px auto;
+  border-radius: 2px;
+}
+
+.card .subtitle {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: #555;
+  margin-bottom: 25px;
+  white-space: nowrap; /* keep "BUSINESS ANALYST · AGILE & SCRUM" on one line */
+}
+
+.card .socials {
+  margin-top: 15px;
+}
+
+.card .socials a {
+  margin: 0 10px;
+  font-size: 18px;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.card .socials a:hover {
+  color: #2563eb;
+}
+
+.intro {
+  max-width: 500px;
+  z-index: 1;
+}
+
+.intro h1 {
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  line-height: 1.15;
+}
+
+.buttons {
+  margin-top: 25px;
+}
+
+.intro .text {
+  font-size: 15px;
+  color: #333;
+}
+
+.intro .text .lead {
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+}
+
+.intro .text p + p {
+  margin-top: 10px;
+}
+
+/* ========== SHARED SECTION STYLES (Projects / Skills / Resume) ========== */
+.projects-section,
+.skills-section,
+.resume-section {
+  background: #e8dfd7;
+  padding: 60px;
+  text-align: center;
+  flex: 1;
+}
+
+.projects-section h2,
+.skills-section h2,
+.resume-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.projects-section .subtitle,
+.skills-section .subtitle {
+  font-size: 14px;
+  color: #444;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+
+.section-title {
+  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 40px auto 20px auto;
+  max-width: 800px;
+}
+
+/* ========== PROJECTS PAGE ========== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.project-img {
+  height: 190px;
+  background: #f5f5f5;
+  flex: none;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-text {
+  flex: 1;
+  padding: 22px 25px 25px;
+}
+
+.project-text h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2563eb;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+
+.project-text .role {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.project-text p {
+  font-size: 14px;
+  color: #444;
+}
+
+.project-text .desc + .desc {
+  margin-top: 10px;
+}
+
+/* Energy: full-width card at the top, text left and image right */
+.project-card.featured {
+  grid-column: 1 / -1;
+  flex-direction: row-reverse;
+}
+
+.project-card.featured .project-img {
+  height: auto;
+  flex: 0 0 38%;
+}
+
+.project-card.featured .project-text {
+  padding: 30px 35px;
+}
+
+.project-card.featured h3 {
+  font-size: 22px;
+}
+
+/* ========== RESUME PAGE ========== */
+.resume-section .download {
+  margin: 10px auto 20px auto;
+}
+
+.resume-card {
+  display: flex;
+  background: #fff;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.resume-left {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.resume-left .date {
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 5px;
+}
+
+.resume-left .role {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.resume-left .company {
+  font-size: 13px;
+  color: #555;
+}
+
+.resume-right {
+  flex: 2;
+  font-size: 14px;
+  color: #444;
+}
+
+/* ----- Timeline (Experience & Education) ----- */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 32px;
+}
+
+/* The vertical line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: #c9b9aa;
+}
+
+.timeline .resume-card {
+  position: relative;
+  max-width: none;
+  margin: 0 0 20px 0;
+  padding: 25px 30px;
+}
+
+.timeline .resume-card:last-child {
+  margin-bottom: 0;
+}
+
+/* The dot for each entry */
+.timeline .resume-card::before {
+  content: "";
+  position: absolute;
+  left: -29px;
+  top: 28px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #e8dfd7;
+  border: 3px solid #2563eb;
+}
+
+/* Current role gets a filled dot */
+.timeline .resume-card.current::before {
+  background: #2563eb;
+}
+
+/* Fixed-width left column so titles and dates line up on every card */
+.timeline .resume-left {
+  flex: 0 0 220px;
+  padding-right: 25px;
+}
+
+.timeline .resume-left .date {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.timeline .resume-left .role {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.timeline .resume-right {
+  flex: 1;
+}
+
+.resume-summary {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* ----- Certifications ----- */
+.cert-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 25px 30px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.cert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.cert-name {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.cert-issuer {
+  font-size: 13px;
+  color: #555;
+}
+
+.cert-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 6px;
+}
+
+.cert-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.cert-link i {
+  font-size: 11px;
+  margin-left: 3px;
+}
+
+.cert-link:hover {
+  text-decoration: underline;
+}
+
+/* Skill cards on the Resume page match the timeline width */
+.resume-section .skills-grid {
+  max-width: 800px;
+}
+
+/* Bullets use the same blue square as the rest of the site */
+.resume-bullets {
+  list-style: none;
+}
+
+.resume-bullets li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.resume-bullets li + li {
+  margin-top: 6px;
+}
+
+.resume-bullets li::before {
+  content: "■";
+  color: #2563eb;
+  font-size: 10px;
+  position: absolute;
+  left: 0;
+  top: 5px;
+}
+
+/* ========== SKILL LISTS (Skills + Resume) ========== */
+.skills-box {
+  display: flex;
+  justify-content: center;
+}
+
+.skills-list {
+  width: 100%;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px 40px;
+}
+
+.skills-list li {
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start; /* long items wrap neatly next to the dot */
+  gap: 8px;
+}
+
+/* ========== SKILLS PAGE ========== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.skill-card {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 25px 30px;
+}
+
+/* Business Analysis and Languages span the full width */
+.skill-card.wide {
+  grid-column: 1 / -1;
+}
+
+.skill-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+/* Same short blue line as under your name on the About page */
+.skill-card h3::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #2563eb;
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+.skill-card ul {
+  list-style: none;
+  display: grid;
+  gap: 10px 40px;
+}
+
+.skill-card.wide ul {
+  grid-template-columns: 1fr 1fr;
+}
+
+.skill-card li {
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.skill-card li .blue-dot {
+  margin-right: 0;
+  flex-shrink: 0;
+}
+
+/* ========== CONTACT PAGE ========== */
+.contact-section {
+  background: #e8dfd7;
+  flex: 1;
+  padding: 60px;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.contact-section .subtitle {
+  font-size: 14px;
+  color: #444;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+}
+
+/* One card: info on the left, form on the right */
+.contact-card {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: left;
+}
+
+.contact-info {
+  background: #fdfaf7;
+  padding: 35px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Same short blue line used on the Skills and Resume cards */
+.contact-info h3::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #2563eb;
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.contact-icon {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e8f0fe;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact-label {
+  display: block;
+  font-size: 12px;
+  color: #777;
+  line-height: 1.3;
+}
+
+.contact-item:hover .contact-icon {
+  background: #2563eb;
+  color: #fff;
+}
+
+.contact-item:hover {
+  color: #2563eb;
+}
+
+.contact-form {
+  padding: 35px 35px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 14px;
+}
+
+.form-row label {
+  flex: 1;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d6d0ca;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.contact-form button {
+  align-self: flex-start;
+  margin-right: 0;
+}
+
+/* Honeypot field against spam bots — hidden from people */
+.hidden-field {
+  position: absolute;
+  left: -9999px;
+}
+
+/* ========== POPUP ========== */
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.popup.open {
+  display: flex;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 420px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+.popup-content p {
+  margin-bottom: 15px;
+  font-size: 16px;
+  white-space: pre-line;
+}
+
+.popup-content.error p {
+  color: #b42318;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popup-content { animation: none; }
+}
+
+/* ========== FOOTER ========== */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px 60px;
+  font-size: 12px;
+  color: #555;
+  background: #fff;
+  margin-top: auto;
+}
+
+footer .contact {
+  display: flex;
+  gap: 40px;
+  text-align: left;
+}
+
+footer .contact a {
+  color: #000;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+footer .contact a:hover {
+  color: #2563eb;
+}
+
+footer .footer-socials a {
+  margin-right: 10px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 992px) {
+  main {
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 20px;
+  }
+
+  main::before {
+    width: 100%;
+    height: 40%;
+  }
+
+  .card {
+    margin-left: 0;
+  }
+
+  .intro h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  header nav {
+    gap: 8px 15px;
+  }
+
+  header nav a {
+    font-size: 13px;
+  }
+
+  .projects-section,
+  .skills-section,
+  .resume-section,
+  .contact-section {
+    padding: 40px 20px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .project-card.featured {
+    flex-direction: column-reverse;
+  }
+
+  .project-card.featured .project-img {
+    flex: none;
+    height: 190px;
+  }
+
+  .project-card.featured .project-text {
+    padding: 22px 25px 25px;
+  }
+
+  .resume-card {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .skill-card {
+    padding: 20px;
+  }
+
+  .skill-card.wide ul {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-left {
+    padding-right: 0;
+  }
+
+  .timeline {
+    padding-left: 24px;
+  }
+
+  .timeline::before {
+    left: 5px;
+  }
+
+  .timeline .resume-card {
+    padding: 20px;
+  }
+
+  .timeline .resume-card::before {
+    left: -25px;
+    top: 24px;
+  }
+
+  .timeline .resume-left {
+    flex: none;
+    padding-right: 0;
+  }
+
+  .cert-card {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .contact-card {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info,
+  .contact-form {
+    padding: 25px 20px;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  footer .contact {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .intro h1 {
+    font-size: 30px;
+  }
+
+  .card {
+    padding: 40px 20px;
+  }
+
+  .card .subtitle {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+}
